@@ -78,7 +78,7 @@ public abstract class AbstractStopwatchActivityTest {
         runUiThreadTasks();
         getActivity().runOnUiThread(() -> {
             assertEquals(5, getDisplayedValue());
-            assertTrue(getResetLapButton().performClick());
+            //assertTrue(getResetLapButton().performClick()); JA: Per Prof instructions
         });
         Thread.sleep(4000); // <-- do not run this in the UI thread!
         runUiThreadTasks();
@@ -89,12 +89,12 @@ public abstract class AbstractStopwatchActivityTest {
         runUiThreadTasks();
         getActivity().runOnUiThread(() -> {
             assertEquals(5, getDisplayedValue());
-            assertTrue(getResetLapButton().performClick());
+            //assertTrue(getResetLapButton().performClick()); JA: Per Prof instructions
         });
         runUiThreadTasks();
         getActivity().runOnUiThread(() -> {
             assertEquals(9, getDisplayedValue());
-            assertTrue(getResetLapButton().performClick());
+            //assertTrue(getResetLapButton().performClick()); JA: Per Prof instructions
         });
         runUiThreadTasks();
         getActivity().runOnUiThread(() -> assertEquals(0, getDisplayedValue()));
@@ -110,17 +110,18 @@ public abstract class AbstractStopwatchActivityTest {
 
     protected int getDisplayedValue() {
         final TextView ts = getActivity().findViewById(R.id.seconds);
-        final TextView tm = getActivity().findViewById(R.id.minutes);
-        return SEC_PER_MIN * tvToInt(tm) + tvToInt(ts);
+        //final TextView tm = getActivity().findViewById(R.id.minutes); JA: Per Prof instructions
+       // return SEC_PER_MIN * tvToInt(tm) + tvToInt(ts); JA: Per Prof instructions
+        return SEC_PER_MIN * tvToInt(ts); // Removed reference to tm (R.id.minutes)
     }
 
     protected Button getStartStopButton() {
         return (Button) getActivity().findViewById(R.id.startStop);
     }
 
-    protected Button getResetLapButton() {
-        return (Button) getActivity().findViewById(R.id.resetLap);
-    }
+//    protected Button getResetLapButton() {
+//        //return (Button) getActivity().findViewById(R.id.resetLap); JA: Per Prof instructions
+//    }
 
     /**
      * Explicitly runs tasks scheduled to run on the UI thread in case this is required
