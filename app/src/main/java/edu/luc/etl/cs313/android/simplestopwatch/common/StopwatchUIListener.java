@@ -5,6 +5,8 @@ package edu.luc.etl.cs313.android.simplestopwatch.common;
  *
  * @author laufer
  */
+
+//FIXME: We should change this to match the one button - increment/reset?
 public interface StopwatchUIListener {
     void onStartStop();
     void onLapReset();

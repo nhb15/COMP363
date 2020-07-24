@@ -11,8 +11,8 @@ interface StopwatchSMStateView {
     // transitions
     void toRunningState();
     void toStoppedState();
-    void toLapRunningState();
-    void toLapStoppedState();
+    void toReadyToRunState();
+    void toAlarmState();
 
     // actions
     void actionInit();
@@ -25,5 +25,7 @@ interface StopwatchSMStateView {
 
     // state-dependent UI updates
     void updateUIRuntime();
+
+    //FIXME: NO longer need Laptime
     void updateUILaptime();
 }
