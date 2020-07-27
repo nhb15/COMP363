@@ -15,6 +15,7 @@ class AlarmState implements StopwatchState {
         sm.actionStart();
         sm.toStoppedState();
     }
+
     //FIXME: Do we need this anymore? Probably not
     @Override
     public void onLapReset() {
@@ -27,7 +28,7 @@ class AlarmState implements StopwatchState {
         throw new UnsupportedOperationException("onTick");
     }
 
-    //FIXME:  No longer need laptime
+    //FIXME:  No longer need laptime, but we do need to update the view...
     @Override
     public void updateView() {
         sm.updateUILaptime();
@@ -39,4 +40,5 @@ class AlarmState implements StopwatchState {
     public int getId() {
         return R.string.ALARM;
     }
+
 }

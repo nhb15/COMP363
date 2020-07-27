@@ -28,4 +28,6 @@ interface StopwatchSMStateView {
 
     //FIXME: NO longer need Laptime
     void updateUILaptime();
+
+    //beep()
 }
