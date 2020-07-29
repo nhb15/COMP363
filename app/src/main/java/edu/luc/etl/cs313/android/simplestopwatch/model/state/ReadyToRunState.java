@@ -39,13 +39,20 @@ class ReadyToRunState implements StopwatchState {
 
     @Override
     public void onTick() {
-        sm.actionInc();
-        sm.toReadyToRunState();
 
         /**
-         * Can we count the ticks somehow in this state in a separate method for the 3 tick check?
+         * Guard condition that checks if 3 seconds have elapsed using threeSecondsElapsed method
          */
-    }
+        if (threeSecondsElapsed()) {
+            sm.toRunningState();
+        }
+
+            /**
+             * Can we count the ticks somehow in this state in a separate method for the 3 tick check?
+             * See below, threeSecondsElapsed method
+             */
+        }
+
     //FIXME: No longer need Laptime - update name or change method
     @Override
     public void updateView() {
@@ -57,6 +64,22 @@ class ReadyToRunState implements StopwatchState {
     public int getId() {
         return R.string.READY_TO_RUN;
     }
+
+    /**
+     * threeSecondsElapsed method borrowed from Nate's isMinimum method
+     * Checks if runtime equals 3, if so returns true, else false
+     */
+
+    public boolean threeSecondsElapsed(){
+        if (sm.getRuntime() == 3){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
 
     public void beep(){
 
