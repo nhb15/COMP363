@@ -28,14 +28,17 @@ class RunningState implements StopwatchState {
 
     @Override
     public void onTick() {
-        sm.actionDec();
+        //decrement by one, check if at zero
 
         if (isMinimum()){
+
             sm.toAlarmState();
         }
-        sm.toRunningState();
+        else {
+            sm.actionDec();
+            sm.toRunningState();
+        }
 
-        //decrement by one, check if at zero
     }
 
     @Override
@@ -49,10 +52,13 @@ class RunningState implements StopwatchState {
     }
 
     public boolean isMinimum(){
+        if (sm.getRuntime() == 0){
+            return true;
+        }
+        else {
+            return false;
+        }
 
-        return false;
     }
-
-
 
 }

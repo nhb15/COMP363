@@ -66,6 +66,11 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
     @Override public void actionStop()       { clockModel.stop(); }
     @Override public void actionLap()        { timeModel.setLaptime(); }
     @Override public void actionInc()        { timeModel.incRuntime(); actionUpdateView(); }
+    //Adding decrementing action for runningState:
     @Override public void actionDec()        { timeModel.decRuntime(); actionUpdateView(); }
+
     @Override public void actionUpdateView() { state.updateView(); }
+
+    //FIXME: We need some way to retrieve the runtime, right? Otherwise we can't check for min/max..But it doesn't seem to match the other methods here.
+    @Override public int getRuntime()       { return timeModel.getRuntime();}
 }

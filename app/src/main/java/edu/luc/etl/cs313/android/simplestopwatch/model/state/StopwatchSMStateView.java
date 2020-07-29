@@ -31,4 +31,6 @@ interface StopwatchSMStateView {
     void updateUILaptime();
 
     //beep()
+
+    int getRuntime();
 }
