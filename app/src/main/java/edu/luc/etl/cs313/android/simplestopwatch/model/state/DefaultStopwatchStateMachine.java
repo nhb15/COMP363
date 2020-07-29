@@ -41,7 +41,7 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
     // these must be synchronized because events can come from the
     // UI thread or the timer thread
     @Override public synchronized void onStartStop() { state.onStartStop(); }
-    @Override public synchronized void onLapReset()  { state.onLapReset(); }
+    //@Override public synchronized void onLapReset()  { state.onLapReset(); }
     @Override public synchronized void onTick()      { state.onTick(); }
 
     @Override public void updateUIRuntime() { uiUpdateListener.updateTime(timeModel.getRuntime()); }
@@ -66,5 +66,6 @@ public class DefaultStopwatchStateMachine implements StopwatchStateMachine {
     @Override public void actionStop()       { clockModel.stop(); }
     @Override public void actionLap()        { timeModel.setLaptime(); }
     @Override public void actionInc()        { timeModel.incRuntime(); actionUpdateView(); }
+    @Override public void actionDec()        { timeModel.decRuntime(); actionUpdateView(); }
     @Override public void actionUpdateView() { state.updateView(); }
 }

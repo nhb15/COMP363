@@ -12,7 +12,7 @@ class RunningState implements StopwatchState {
     private final StopwatchSMStateView sm;
 
     @Override
-    public void onClick() {
+    public void onStartStop() {
         sm.actionStop();
         sm.toStoppedState();
     }
@@ -28,8 +28,14 @@ class RunningState implements StopwatchState {
 
     @Override
     public void onTick() {
-        sm.actionInc();
+        sm.actionDec();
+
+        if (isMinimum()){
+            sm.toAlarmState();
+        }
         sm.toRunningState();
+
+        //decrement by one, check if at zero
     }
 
     @Override
@@ -41,4 +47,12 @@ class RunningState implements StopwatchState {
     public int getId() {
         return R.string.RUNNING;
     }
+
+    public boolean isMinimum(){
+
+        return false;
+    }
+
+
+
 }

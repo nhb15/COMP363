@@ -11,7 +11,7 @@ class AlarmState implements StopwatchState {
     private final StopwatchSMStateView sm;
 
     @Override
-    public void onClick() {
+    public void onStartStop() {
         sm.actionStart();
         sm.toStoppedState();
     }
