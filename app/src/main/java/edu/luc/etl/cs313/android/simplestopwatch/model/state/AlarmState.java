@@ -11,17 +11,20 @@ class AlarmState implements StopwatchState {
     private final StopwatchSMStateView sm;
 
     @Override
-    public void onStartStop() {
+    public void onClick() {
         sm.actionStart();
         sm.toStoppedState();
     }
+/**
+ * J/N
+ * Let's get rid of onLapReset as an "onClick" as we only need one on Click action
 
-    //FIXME: Do we need this anymore? Probably not
     @Override
     public void onLapReset() {
         sm.toStoppedState();
         sm.actionUpdateView();
     }
+ */
 
     @Override
     public void onTick() {

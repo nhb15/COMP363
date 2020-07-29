@@ -14,7 +14,7 @@ class ReadyToRunState implements StopwatchState {
     private final StopwatchSMStateView sm;
 
     @Override
-    public void onStartStop() {
+    public void onClick() {
         sm.actionStop();
         sm.toStoppedState();
 
@@ -29,12 +29,13 @@ class ReadyToRunState implements StopwatchState {
     /**
      * J/N
      * Let's get rid of onLapReset as an "onClick" as we only need one on Click action
-     */
+
     @Override
     public void onLapReset() {
         sm.toRunningState();
         sm.actionUpdateView();
     }
+     */
 
     @Override
     public void onTick() {
