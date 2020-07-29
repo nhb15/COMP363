@@ -116,6 +116,23 @@ public abstract class AbstractStopwatchStateMachineTest {
         assertTimeEquals(0);
     }
 
+    @Test
+    public void testDecrementRunningState() {
+        assertTimeEquals(0);
+        model.actionInc();
+        model.actionInc();
+        model.actionInc();
+        model.actionInc();
+        assertTimeEquals(4);
+        model.onStartStop();
+        assertEquals(R.string.RUNNING, dependency.getState());
+        onTickRepeat(3);
+        assertTimeEquals(1);
+        onTickRepeat(2);
+        assertTimeEquals(0);
+
+    }
+
     /**
      * Sends the given number of tick events to the model.
      *
