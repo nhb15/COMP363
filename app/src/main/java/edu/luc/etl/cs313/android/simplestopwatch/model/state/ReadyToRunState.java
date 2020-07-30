@@ -25,8 +25,9 @@ class ReadyToRunState implements StopwatchState {
         //by checking if the clickCounter has increased up to 99
         //then resets clickCounter to 0 for future purposes
         if(clickCounter == 99){
-           sm.toRunningState();
-           clickCounter = 0;
+            //TODO add single beep before transition
+            sm.toRunningState();
+            clickCounter = 0;
         }
         //if clock model has not yet reached 99, updates the clock model by one
         //and increments click counter
@@ -34,8 +35,8 @@ class ReadyToRunState implements StopwatchState {
             sm.actionInc();
             clickCounter++;
         }
-        sm.actionStop();
-        sm.toStoppedState();
+        //sm.actionStop();
+        //sm.toStoppedState();
 
         /**
          * J/N
@@ -63,6 +64,7 @@ class ReadyToRunState implements StopwatchState {
          * Guard condition that checks if 3 seconds have elapsed using threeSecondsElapsed method
          */
         if (threeSecondsElapsed()) {
+            //TODO add single beep before transition
             sm.toRunningState();
         }
 
