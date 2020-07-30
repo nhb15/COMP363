@@ -34,7 +34,7 @@ class AlarmState implements StopwatchState {
     //FIXME:  No longer need laptime, but we do need to update the view...
     @Override
     public void updateView() {
-        sm.updateUILaptime();
+        sm.updateUIRuntime();
     }
 
 

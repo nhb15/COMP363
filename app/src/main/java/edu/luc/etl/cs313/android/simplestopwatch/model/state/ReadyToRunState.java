@@ -79,7 +79,7 @@ class ReadyToRunState implements StopwatchState {
     //FIXME: No longer need Laptime - update name or change method
     @Override
     public void updateView() {
-        sm.updateUILaptime();
+        sm.updateUIRuntime();
     }
 
     //FIXME: I'm not entirely sure if I added this resource correctly, but we can check
