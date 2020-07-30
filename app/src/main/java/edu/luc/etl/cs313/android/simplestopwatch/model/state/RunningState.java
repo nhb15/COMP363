@@ -17,7 +17,7 @@ class RunningState implements StopwatchState {
      */
     @Override
     public void onStartStop() {
-        //sm.actionStop();
+        sm.actionStop();
         sm.actionReset();
         sm.toStoppedState();
     }
@@ -41,7 +41,7 @@ class RunningState implements StopwatchState {
         }
         else {
             sm.actionDec();
-            sm.toRunningState();
+            //sm.toRunningState();
         }
 
     }

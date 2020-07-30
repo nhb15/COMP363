@@ -33,7 +33,8 @@ class AlarmState implements StopwatchState {
     //FIXME: JARROYO - No need to update view in "AlarmState"
 //    @Override
     public void updateView() {
-        sm.updateUIRuntime();
+        throw new UnsupportedOperationException("updateView");
+        //sm.updateUIRuntime();
     }
 
 
