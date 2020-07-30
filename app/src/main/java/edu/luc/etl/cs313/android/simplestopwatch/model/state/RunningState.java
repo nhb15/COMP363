@@ -17,7 +17,7 @@ class RunningState implements StopwatchState {
      */
     @Override
     public void onStartStop() {
-        //sm.actionStop(); I think we shouldn't stop the ticks here and instead stop them in alarmState's transition to stopped state
+        sm.actionStop(); 
         sm.actionReset();
         sm.toStoppedState();
     }
