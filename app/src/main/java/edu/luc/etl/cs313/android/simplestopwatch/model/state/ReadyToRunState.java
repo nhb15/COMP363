@@ -13,8 +13,27 @@ class ReadyToRunState implements StopwatchState {
 
     private final StopwatchSMStateView sm;
 
+    /**
+     * Variable to count how many times the button has been pushed
+     */
+    private int clickCounter = 0;
+
     @Override
     public void onStartStop() {
+
+        //Guard condition that checks if the clock model has reached 99
+        //by checking if the clickCounter has increased up to 99
+        //then resets clickCounter to 0 for future purposes
+        if(clickCounter == 99){
+           sm.toRunningState();
+           clickCounter = 0;
+        }
+        //if clock model has not yet reached 99, updates the clock model by one
+        //and increments click counter
+        else{
+            sm.actionInc();
+            clickCounter++;
+        }
         sm.actionStop();
         sm.toStoppedState();
 
