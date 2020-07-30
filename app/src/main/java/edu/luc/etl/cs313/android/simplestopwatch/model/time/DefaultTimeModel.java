@@ -28,7 +28,7 @@ public class DefaultTimeModel implements TimeModel {
     public int getRuntime() {
         return runningTime;
     }
-
+    /**
     @Override
     public void setLaptime() {
         lapTime = runningTime;
@@ -38,4 +38,5 @@ public class DefaultTimeModel implements TimeModel {
     public int getLaptime() {
         return lapTime;
     }
+    */
 }
