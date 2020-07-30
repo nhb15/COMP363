@@ -37,7 +37,8 @@ public abstract class AbstractTimeModelTest {
     @Test
     public void testPreconditions() {
         assertEquals(0, model.getRuntime());
-        assertTrue(model.getLaptime() <= 0);
+        // Lap-related tests are no longer needed.
+        //assertTrue(model.getLaptime() <= 0);
     }
 
     /**
@@ -46,10 +47,11 @@ public abstract class AbstractTimeModelTest {
     @Test
     public void testIncrementRuntimeOne() {
         final int rt = model.getRuntime();
-        final int lt = model.getLaptime();
+        // Lap-related tests are no longer needed.
+        //final int lt = model.getLaptime();
         model.incRuntime();
         assertEquals((rt + SEC_PER_TICK) % SEC_PER_MIN, model.getRuntime());
-        assertEquals(lt, model.getLaptime());
+        //assertEquals(lt, model.getLaptime());
     }
 
     /**
@@ -58,18 +60,20 @@ public abstract class AbstractTimeModelTest {
     @Test
     public void testIncrementRuntimeMany() {
         final int rt = model.getRuntime();
-        final int lt = model.getLaptime();
+        //final int lt = model.getLaptime();
         for (int i = 0; i < SEC_PER_HOUR; i ++) {
             model.incRuntime();
         }
         assertEquals(rt, model.getRuntime());
-        assertEquals(lt, model.getLaptime());
+        //assertEquals(lt, model.getLaptime());
     }
 
     /**
      * Verifies that laptime works correctly.
      */
-    @Test
+
+    // Lap-related tests are no longer needed.
+    /*@Test
     public void testLaptime() {
         final int rt = model.getRuntime();
         final int lt = model.getLaptime();
@@ -85,5 +89,5 @@ public abstract class AbstractTimeModelTest {
         }
         assertEquals(rt + 10, model.getRuntime());
         assertEquals(rt + 5, model.getLaptime());
-    }
+    }*/
 }

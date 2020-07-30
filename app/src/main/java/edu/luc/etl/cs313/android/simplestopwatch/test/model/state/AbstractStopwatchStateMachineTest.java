@@ -87,7 +87,8 @@ public abstract class AbstractStopwatchStateMachineTest {
      *
      * @throws Throwable
      */
-    @Test
+    // Lap-related tests are no longer needed.
+    /*@Test
     public void testScenarioRunLapReset() {
         //FIXME:
         assertTimeEquals(0);
@@ -114,7 +115,7 @@ public abstract class AbstractStopwatchStateMachineTest {
         assertEquals(R.string.STOPPED, dependency.getState());
         assertFalse(dependency.isStarted());
         assertTimeEquals(0);
-    }
+    }*/
 
     @Test
     public void testDecrementRunningState() {
@@ -163,7 +164,9 @@ class UnifiedMockDependency implements TimeModel, ClockModel, StopwatchUIUpdateL
 
     private int timeValue = -1, stateId = -1;
 
-    private int runningTime = 0, lapTime = -1;
+    // Lap-related tests are no longer needed.
+    //private int runningTime = 0, lapTime = -1;
+    private int runningTime = 0;
 
     private boolean started = false;
 
@@ -222,7 +225,8 @@ class UnifiedMockDependency implements TimeModel, ClockModel, StopwatchUIUpdateL
         return runningTime;
     }
 
-    @Override
+    // Lap-related tests are no longer needed.
+    /*@Override
     public void setLaptime() {
         lapTime = runningTime;
     }
@@ -230,5 +234,5 @@ class UnifiedMockDependency implements TimeModel, ClockModel, StopwatchUIUpdateL
     @Override
     public int getLaptime() {
         return lapTime;
-    }
+    }*/
 }

@@ -11,6 +11,8 @@ public interface TimeModel {
     void incRuntime();
     void decRuntime();
     int getRuntime();
-    void setLaptime();
-    int getLaptime();
+
+    // Lap-related tests are no longer needed.
+    /*void setLaptime();
+    int getLaptime();*/
 }

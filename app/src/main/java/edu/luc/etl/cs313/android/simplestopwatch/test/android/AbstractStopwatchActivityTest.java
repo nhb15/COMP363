@@ -68,7 +68,8 @@ public abstract class AbstractStopwatchActivityTest {
      *
      * @throws Throwable
      */
-    @Test
+    // Lap-related tests are no longer needed.
+    /*@Test
     public void testActivityScenarioRunLapReset() throws Throwable {
         getActivity().runOnUiThread(() -> {
             assertEquals(0, getDisplayedValue());
@@ -98,7 +99,7 @@ public abstract class AbstractStopwatchActivityTest {
         });
         runUiThreadTasks();
         getActivity().runOnUiThread(() -> assertEquals(0, getDisplayedValue()));
-    }
+    }*/
 
     // auxiliary methods for easy access to UI widgets
 
