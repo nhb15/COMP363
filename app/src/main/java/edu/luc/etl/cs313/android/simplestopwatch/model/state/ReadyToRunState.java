@@ -16,6 +16,11 @@ class ReadyToRunState implements StopwatchState {
     /**
      * Variable to count how many times the button has been pushed
      */
+
+    /**
+     * from Nate: I think if you use the sm.getRuntime() for the "click's" since the clicks update the runtime already it would be easier - alternatively, keep clickcounter but try having clickCounter == 98
+     * since it seems like one extra click is required to send it to running state
+     */
     private int clickCounter = 0;
 
     @Override
@@ -91,6 +96,11 @@ class ReadyToRunState implements StopwatchState {
     /**
      * threeSecondsElapsed method borrowed from Nate's isMinimum method
      * Checks if runtime equals 3, if so returns true, else false
+     */
+
+    /**
+     * from Nate: This is grabbing when the timer is incremented to 3 seconds and it's immediately sending it to running state -
+     * I think if you use a tickCounter in onTick it might work?
      */
 
     public boolean threeSecondsElapsed(){
