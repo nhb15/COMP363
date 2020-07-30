@@ -14,6 +14,7 @@ class StoppedState implements StopwatchState {
     public void onStartStop() {
         sm.actionStart();
         sm.toReadyToRunState();
+        sm.actionInc();
     }
 /**
  * J/N
