@@ -11,9 +11,13 @@ class RunningState implements StopwatchState {
 
     private final StopwatchSMStateView sm;
 
+    /**
+     * onStartStop is the onClick method adapted to the timer.
+     *
+     */
     @Override
     public void onStartStop() {
-        sm.actionStop();
+        //sm.actionStop(); I think we shouldn't stop the ticks here and instead stop them in alarmState's transition to stopped state
         sm.actionReset();
         sm.toStoppedState();
     }
