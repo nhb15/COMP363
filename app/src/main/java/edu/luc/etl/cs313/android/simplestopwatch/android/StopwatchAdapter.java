@@ -63,7 +63,8 @@ public class StopwatchAdapter extends Activity implements StopwatchUIUpdateListe
         runOnUiThread(() -> {
             final TextView tvS = (TextView) findViewById(R.id.seconds);
             //final TextView tvM = (TextView) findViewById(R.id.minutes); JA: Per Prof Instructions
-            final int seconds = time % Constants.SEC_PER_MIN;
+            //final int seconds = time % Constants.SEC_PER_MIN;
+            final int seconds = time % 100; //Must be mod by 100 as our timer goes up to 99
             final int minutes = time / Constants.SEC_PER_MIN;
             tvS.setText(Integer.toString(seconds / 10) + Integer.toString(seconds % 10));
             //tvM.setText(Integer.toString(minutes / 10) + Integer.toString(minutes % 10)); JA: Per Prof instructions
