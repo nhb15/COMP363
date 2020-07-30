@@ -19,7 +19,7 @@ interface StopwatchSMStateView {
     void actionReset();
     void actionStart();
     void actionStop();
-    void actionLap();
+    //void actionLap();
     void actionInc();
     void actionDec();
     void actionUpdateView();
@@ -28,7 +28,7 @@ interface StopwatchSMStateView {
     void updateUIRuntime();
 
     //FIXME: NO longer need Laptime
-    void updateUILaptime();
+    //void updateUILaptime();
 
     //beep()
 
