@@ -26,6 +26,7 @@ class ReadyToRunState implements StopwatchState {
         //then resets clickCounter to 0 for future purposes
         if(clickCounter == 99){
             //TODO add single beep before transition
+            beep();
             sm.toRunningState();
             clickCounter = 0;
         }
@@ -65,6 +66,7 @@ class ReadyToRunState implements StopwatchState {
          */
         if (threeSecondsElapsed()) {
             //TODO add single beep before transition
+            beep();
             sm.toRunningState();
         }
 
@@ -103,6 +105,16 @@ class ReadyToRunState implements StopwatchState {
 
 
     public void beep(){
+        /**
+         * Taking thoughts from here:
+         * https://developer.android.com/reference/android/media/ToneGenerator
+         * and here
+         * https://stackoverflow.com/questions/29509010/how-to-play-a-short-beep-to-android-phones-loudspeaker-programmatically
+         * Below is a tone that should sound for 150 milliseconds, I still want to test it and maybe toy with the
+         * actual tone
+         */
+        ToneGenerator transitionTone = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+        transitionTone.startTone(ToneGenerator.TONE_CDMA_PIP,150);
 
         /**We tried "toolkit beep" but it didn't work
          *
@@ -110,7 +122,6 @@ class ReadyToRunState implements StopwatchState {
 
         ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
         toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
-
 
          * COULD ALSO TRY
          *
