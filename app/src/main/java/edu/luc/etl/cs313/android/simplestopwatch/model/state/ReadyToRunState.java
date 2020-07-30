@@ -29,7 +29,7 @@ class ReadyToRunState implements StopwatchState {
         //Guard condition that checks if the clock model has reached 99
         //by checking if the clickCounter has increased up to 99
         //then resets clickCounter to 0 for future purposes
-        if(clickCounter == 99){
+        if(clickCounter == 9){
             //TODO add single beep before transition
             beep();
             sm.toRunningState();
