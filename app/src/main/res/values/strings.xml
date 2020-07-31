@@ -19,5 +19,6 @@
     <string name="LAP_STOPPED">Lap/Stopped</string>
     <string name="ALARM">Alarm</string>
     <string name="READY_TO_RUN">ReadyToRun</string>
+    <string name="set_stop">Set/Stop</string>
 
 </resources>

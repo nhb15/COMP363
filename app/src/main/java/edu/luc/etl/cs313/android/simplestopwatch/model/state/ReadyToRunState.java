@@ -22,20 +22,23 @@ class ReadyToRunState implements StopwatchState {
      * since it seems like one extra click is required to send it to running state
      */
     private int clickCounter = 0;
-    private int ticCounter = 0; // keeps track of tics once
+    private int tickCounter = 0; // keeps track of tics once
 
     @Override
     public void onStartStop() {
-        ticCounter = 0;
+        tickCounter = 0;
 
         //Guard condition that checks if the clock model has reached 99
         //by checking if the clickCounter has increased up to 99
         //then resets clickCounter to 0 for future purposes
-        if(clickCounter == 9){
+        //if(clickCounter == 99){
+        if(sm.getRuntime() == 99){
             //TODO add single beep before transition
             beep();
-            sm.toRunningState();
             clickCounter = 0;
+            tickCounter = 0;
+            sm.toRunningState();
+
         }
         //if clock model has not yet reached 99, updates the clock model by one
         //and increments click counter
@@ -67,17 +70,18 @@ class ReadyToRunState implements StopwatchState {
 
     @Override
     public void onTick() {
-        ticCounter++;
+        tickCounter++;
 
         /**
          * Guard condition that checks if 3 seconds have elapsed using threeSecondsElapsed method
          */
         //if (threeSecondsElapsed()) {
-        if (ticCounter == 3){
+        if (tickCounter == 3){
             //TODO add single beep before transition
             beep();
+            tickCounter = 0;
             sm.toRunningState();
-            ticCounter = 0;
+
         }
 
             /**
