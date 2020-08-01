@@ -71,6 +71,7 @@ public abstract class AbstractStopwatchStateMachineTest {
      * Verifies the following scenario: time is 0, press start, wait 5+ seconds,
      * expect time 5.
      */
+
     // This is replaced by testDecrementRunningState()
     /*@Test
     public void testScenarioRun() {
