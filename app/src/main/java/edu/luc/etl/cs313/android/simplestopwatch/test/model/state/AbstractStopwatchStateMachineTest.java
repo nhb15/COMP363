@@ -119,6 +119,20 @@ public abstract class AbstractStopwatchStateMachineTest {
     }*/
 
     @Test
+    public void testIncrement(){
+        assertTimeEquals(0);
+        model.toReadyToRunState();
+        model.actionInc();
+        model.actionInc();
+        assertTimeEquals(2);
+        model.actionInc();
+        model.actionInc();
+        model.actionInc();
+        model.actionInc();
+        assertTimeEquals(6);
+    }
+
+    @Test
     public void testDecrementRunningState() {
         assertTimeEquals(0);
         model.actionInc();
