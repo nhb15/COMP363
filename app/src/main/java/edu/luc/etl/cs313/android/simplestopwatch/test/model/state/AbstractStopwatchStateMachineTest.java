@@ -71,14 +71,15 @@ public abstract class AbstractStopwatchStateMachineTest {
      * Verifies the following scenario: time is 0, press start, wait 5+ seconds,
      * expect time 5.
      */
-    @Test
+    // This is replaced by testDecrementRunningState()
+    /*@Test
     public void testScenarioRun() {
         assertTimeEquals(0);
         // directly invoke the button press event handler methods
         model.onStartStop();
         onTickRepeat(5);
         assertTimeEquals(5);
-    }
+    }*/
 
     /**
      * Verifies the following scenario: time is 0, press start, wait 5+ seconds,
@@ -125,13 +126,30 @@ public abstract class AbstractStopwatchStateMachineTest {
         model.actionInc();
         model.actionInc();
         assertTimeEquals(4);
-        model.onStartStop();
+        //model.onStartStop();
+        model.toRunningState();
         assertEquals(R.string.RUNNING, dependency.getState());
         onTickRepeat(3);
         assertTimeEquals(1);
         onTickRepeat(2);
         assertTimeEquals(0);
 
+    }
+
+    @Test
+    public void testTimerReset(){
+        assertTimeEquals(0);
+        model.actionInc();
+        model.actionInc();
+        model.actionInc();
+        model.actionInc();
+        assertTimeEquals(4);
+        model.toRunningState();
+        assertEquals(R.string.RUNNING, dependency.getState());
+        onTickRepeat(2);
+        assertTimeEquals(2);
+        model.actionInit();
+        assertTimeEquals(0);
     }
 
     /**
