@@ -148,7 +148,7 @@ public abstract class AbstractStopwatchStateMachineTest {
         assertTimeEquals(1);
         onTickRepeat(2);
         assertTimeEquals(0);
-
+        assertEquals(R.string.ALARM, dependency.getState());
     }
 
     @Test
@@ -165,6 +165,34 @@ public abstract class AbstractStopwatchStateMachineTest {
         assertTimeEquals(2);
         model.actionInit();
         assertTimeEquals(0);
+        assertEquals(R.string.STOPPED, dependency.getState());
+    }
+
+    @Test
+    public void testIdleAtStoppedState(){
+        assertTimeEquals(0);
+        model.toAlarmState();
+        assertEquals(R.string.ALARM, dependency.getState());
+        model.onStartStop();
+        assertEquals(R.string.STOPPED, dependency.getState());
+
+    }
+
+    @Test
+    public void testMaxDecrementImmediate(){
+        assertTimeEquals(0);
+
+        for (int i = 0; i < 99; i++){
+            model.actionInc();
+        }
+        assertEquals(R.string.READY_TO_RUN, dependency.getState());
+        assertTimeEquals(99);
+        //model.toRunningState();
+        //Thread.sleep(5000);
+        //assertEquals(R.string.RUNNING, dependency.getState());
+
+        //onTickRepeat(5);
+        //assertTimeEquals(94);
     }
 
     /**
