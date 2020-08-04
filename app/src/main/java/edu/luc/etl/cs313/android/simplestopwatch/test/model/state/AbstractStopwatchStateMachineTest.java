@@ -177,6 +177,16 @@ public abstract class AbstractStopwatchStateMachineTest {
         assertEquals(R.string.STOPPED, dependency.getState());
 
     }
+    @Test
+    public void testTransitionToRunningState() throws InterruptedException {
+        assertTimeEquals(0);
+        model.actionInc();
+        model.actionInc();
+        model.actionInc();
+        assertTimeEquals(3);
+        Thread.sleep(3000);
+        assertEquals(R.string.READY_TO_RUN, dependency.getState());
+    }
 
     @Test
     public void testMaxDecrementImmediate(){
@@ -185,7 +195,7 @@ public abstract class AbstractStopwatchStateMachineTest {
         for (int i = 0; i < 99; i++){
             model.actionInc();
         }
-        assertEquals(R.string.READY_TO_RUN, dependency.getState());
+        assertEquals(R.string.RUNNING, dependency.getState());
         assertTimeEquals(99);
         //model.toRunningState();
         //Thread.sleep(5000);
@@ -194,7 +204,7 @@ public abstract class AbstractStopwatchStateMachineTest {
         //onTickRepeat(5);
         //assertTimeEquals(94);
     }
-
+    
     /**
      * Sends the given number of tick events to the model.
      *

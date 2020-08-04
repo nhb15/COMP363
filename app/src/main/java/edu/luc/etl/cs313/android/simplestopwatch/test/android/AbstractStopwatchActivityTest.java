@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import android.content.pm.ActivityInfo;
 import android.widget.Button;
 import android.widget.TextView;
 import edu.luc.etl.cs313.android.simplestopwatch.R;
@@ -64,10 +65,14 @@ public abstract class AbstractStopwatchActivityTest {
     @Test
     public void testStateRetentionOnRotate(){
         assertEquals(0, getDisplayedValue());
-        //assertTrue(get)
-        getStartStopButton().performClick();
-        assertEquals(1, getDisplayedValue());
-
+        assertTrue(getStartStopButton().performClick());
+        assertTrue(getStartStopButton().performClick());
+        assertTrue(getStartStopButton().performClick());
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        assertEquals(3, getDisplayedValue());
+        assertEquals(3, getDisplayedValue());
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        assertEquals(3, getDisplayedValue());
     }
 
     /**
@@ -122,7 +127,8 @@ public abstract class AbstractStopwatchActivityTest {
         final TextView ts = getActivity().findViewById(R.id.seconds);
         //final TextView tm = getActivity().findViewById(R.id.minutes); JA: Per Prof instructions
        // return SEC_PER_MIN * tvToInt(tm) + tvToInt(ts); JA: Per Prof instructions
-        return SEC_PER_MIN * tvToInt(ts); // Removed reference to tm (R.id.minutes)
+        //return SEC_PER_MIN * tvToInt(ts); // Removed reference to tm (R.id.minutes)
+        return tvToInt(ts);
     }
 
     protected Button getStartStopButton() {
