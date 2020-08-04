@@ -68,6 +68,26 @@ public abstract class AbstractStopwatchActivityTest {
         getStartStopButton().performClick();
         assertEquals(1, getDisplayedValue());
 
+        /**
+         * From: https://github.com/LoyolaChicagoCode/clickcounter-android-java/blob/master/app/src/sharedTest/java/edu/luc/etl/cs313/android/clickcounter/AbstractClickCounterActivityTest.java
+         *
+         * @Test
+         *   @UiThreadTest
+         *   public void testActivityScenarioRotation() {
+         *     assertTrue(getResetButton().performClick());
+         *     assertEquals(0, getDisplayedValue());
+         *     assertTrue(getIncButton().performClick());
+         *     assertTrue(getIncButton().performClick());
+         *     assertTrue(getIncButton().performClick());
+         *     assertEquals(3, getDisplayedValue());
+         *     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+         *     assertEquals(3, getDisplayedValue());
+         *     getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+         *     assertEquals(3, getDisplayedValue());
+         *     assertTrue(getResetButton().performClick());
+         *   }
+         */
+
     }
 
     /**
