@@ -68,8 +68,8 @@ public abstract class AbstractStopwatchActivityTest {
         assertTrue(getStartStopButton().performClick());
         assertTrue(getStartStopButton().performClick());
         assertTrue(getStartStopButton().performClick());
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         assertEquals(3, getDisplayedValue());
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         assertEquals(3, getDisplayedValue());
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         assertEquals(3, getDisplayedValue());
