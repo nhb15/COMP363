@@ -61,6 +61,15 @@ public abstract class AbstractStopwatchActivityTest {
         });
     }
 
+    @Test
+    public void testStateRetentionOnRotate(){
+        assertEquals(0, getDisplayedValue());
+        //assertTrue(get)
+        getStartStopButton().performClick();
+        assertEquals(1, getDisplayedValue());
+
+    }
+
     /**
      * Verifies the following scenario: time is 0, press start, wait 5+ seconds,
      * expect time 5, press lap, wait 4 seconds, expect time 5, press start,
