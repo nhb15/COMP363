@@ -2,6 +2,7 @@ package edu.luc.etl.cs313.android.simplestopwatch.model.state;
 
 import android.media.AudioManager;
 import android.media.ToneGenerator;
+import android.os.Handler;
 
 import edu.luc.etl.cs313.android.simplestopwatch.R;
 
@@ -24,6 +25,7 @@ class ReadyToRunState implements StopwatchState {
     private int clickCounter = 0;
     private int tickCounter = 0; // keeps track of tics once
 
+
     @Override
     public void onStartStop() {
         tickCounter = 0;
@@ -34,10 +36,18 @@ class ReadyToRunState implements StopwatchState {
         //if(clickCounter == 99){
         if(sm.getRuntime() == 99){
             //TODO add single beep before transition
-            beep();
-            clickCounter = 0;
-            tickCounter = 0;
-            sm.toRunningState();
+
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    beep();
+                    clickCounter = 0;
+                    tickCounter = 0;
+                    sm.toRunningState();
+                }
+            }, 1000);   //5 seconds
+
+
 
         }
         //if clock model has not yet reached 99, updates the clock model by one
@@ -97,6 +107,11 @@ class ReadyToRunState implements StopwatchState {
     }
 
     //FIXME: I'm not entirely sure if I added this resource correctly, but we can check
+
+    /**
+     * getId returns the resource ReadyToRuin
+     * @return
+     */
     @Override
     public int getId() {
         return R.string.READY_TO_RUN;
@@ -112,6 +127,10 @@ class ReadyToRunState implements StopwatchState {
      * I think if you use a tickCounter in onTick it might work?
      */
 
+    /**
+     * threeSecondsElapsed checks if three seconds has passed 
+     * @return
+     */
     public boolean threeSecondsElapsed(){
         if (sm.getRuntime() == 3){
             return true;
