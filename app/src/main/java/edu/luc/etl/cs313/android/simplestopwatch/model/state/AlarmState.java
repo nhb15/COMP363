@@ -12,6 +12,9 @@ class AlarmState implements StopwatchState {
 
     private final StopwatchSMStateView sm;
 
+    /**
+     * On button click, Stop clock/beeping and move to stopped state
+     */
     @Override
     public void onStartStop() {
         //sm.actionStart();
@@ -19,7 +22,11 @@ class AlarmState implements StopwatchState {
         sm.toStoppedState();
     }
 
+
     @Override
+    /**
+     * beep on every tick of the clock
+     */
     public void onTick() {
         beep();
 //        while(true) {
@@ -30,8 +37,11 @@ class AlarmState implements StopwatchState {
     }
 
     //FIXME:  No longer need laptime, but we do need to update the view...
+    /**
+    *No need to update view in "AlarmState"
+     */
     //FIXME: JARROYO - No need to update view in "AlarmState"
-//    @Override
+    @Override
     public void updateView() {
         throw new UnsupportedOperationException("updateView");
         //sm.updateUIRuntime();
@@ -40,6 +50,10 @@ class AlarmState implements StopwatchState {
 
     //FIXME: I'm not entirely sure if I added this resource correctly, but we can check
     //FIXME: JARROYO - Added to strings.xml file
+    /**
+    Added to strings.xml file
+     */
+
     @Override
     public int getId() {
         return R.string.ALARM;
@@ -56,8 +70,10 @@ class AlarmState implements StopwatchState {
 
 
 
-
+/**
     // Re-used from ReadyToRunSate
+    // could be pulled out for multiple classes to use
+ */
     public void beep(){
         /**
          * Taking thoughts from here:
