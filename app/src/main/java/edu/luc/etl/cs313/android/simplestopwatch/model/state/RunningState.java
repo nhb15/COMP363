@@ -13,7 +13,7 @@ class RunningState implements StopwatchState {
 
     /**
      * onStartStop is the onClick method adapted to the timer.
-     *
+     * In the running state, we want to completely reset the timer and send it to the Stopped State on a click.
      */
     @Override
     public void onStartStop() {
@@ -21,41 +21,40 @@ class RunningState implements StopwatchState {
         sm.actionReset();
         sm.toStoppedState();
     }
-/**
- * J/N
- * Let's get rid of onLapReset as an "onClick" as we only need one on Click action
-    @Override
-    public void onLapReset() {
-        sm.actionLap();
-        //sm.toLapRunningState();
-    }
- */
 
+    /**
+     * onTick decrements the timer by one every second until we reach the minimum (0), when we send it to the alarm state
+     */
     @Override
     public void onTick() {
-        //decrement by one, check if at zero
 
         if (isMinimum()){
 
-            sm.toAlarmState();
+            sm.toAlarmState(); //Once we reach minimum, we send program to the alarm state.
         }
         else {
             sm.actionDec();
-            //sm.toRunningState();
         }
 
     }
 
+    /**
+     * Updates the view of the timer
+     */
     @Override
     public void updateView() {
         sm.updateUIRuntime();
     }
-
+    
     @Override
     public int getId() {
         return R.string.RUNNING;
     }
 
+    /**
+     * isMinimum checks if we are at the minimum value of the timer (0)
+     * @return true or false
+     */
     public boolean isMinimum(){
         if (sm.getRuntime() == 0){
             return true;
