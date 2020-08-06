@@ -46,7 +46,7 @@ class ReadyToRunState implements StopwatchState {
         //and increments click counter
         else{
             sm.actionInc();
-            clickCounter++;
+            //clickCounter++;
         }
 
     }
