@@ -36,11 +36,11 @@ class AlarmState implements StopwatchState {
 
     }
 
-    //FIXME:  No longer need laptime, but we do need to update the view...
+
     /**
     *No need to update view in "AlarmState"
      */
-    //FIXME: JARROYO - No need to update view in "AlarmState"
+
     @Override
     public void updateView() {
         throw new UnsupportedOperationException("updateView");
@@ -48,8 +48,8 @@ class AlarmState implements StopwatchState {
     }
 
 
-    //FIXME: I'm not entirely sure if I added this resource correctly, but we can check
-    //FIXME: JARROYO - Added to strings.xml file
+
+
     /**
     Added to strings.xml file
      */

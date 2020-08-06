@@ -17,11 +17,6 @@ class ReadyToRunState implements StopwatchState {
     /**
      * Variable to count how many times the button has been pushed
      */
-
-    /**
-     * from Nate: I think if you use the sm.getRuntime() for the "click's" since the clicks update the runtime already it would be easier - alternatively, keep clickcounter but try having clickCounter == 98
-     * since it seems like one extra click is required to send it to running state
-     */
     private int clickCounter = 0; //initially, this was used to track click events. We removed in favor
                                   //of get.Runtime()
     private int tickCounter = 0; // keeps track of tick events
@@ -95,13 +90,13 @@ class ReadyToRunState implements StopwatchState {
 
         }
 
-    //FIXME: No longer need Laptime - update name or change method
+
     @Override
     public void updateView() {
         sm.updateUIRuntime();
     }
 
-    //FIXME: I'm not entirely sure if I added this resource correctly, but we can check
+
 
     /**
      * getId returns the resource ReadyToRuin
@@ -117,12 +112,7 @@ class ReadyToRunState implements StopwatchState {
      * Checks if runtime equals 3, if so returns true, else false
      */
 
-    /**
-     * from Nate: This is grabbing when the timer is incremented to 3 seconds and it's immediately sending it to running state -
-     * I think if you use a tickCounter in onTick it might work?
-     */
-
-    /**
+     /**
      * threeSecondsElapsed checks if three seconds has passed. This method was used initially,
      * but has been replaced with a guard condition in the onTick method and an incrementing tickCounter
      * that increments per tick event.

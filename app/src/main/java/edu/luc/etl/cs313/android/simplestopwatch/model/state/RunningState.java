@@ -45,7 +45,7 @@ class RunningState implements StopwatchState {
     public void updateView() {
         sm.updateUIRuntime();
     }
-    
+
     @Override
     public int getId() {
         return R.string.RUNNING;
