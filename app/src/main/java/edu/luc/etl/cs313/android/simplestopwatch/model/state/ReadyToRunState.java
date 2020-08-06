@@ -92,7 +92,7 @@ class ReadyToRunState implements StopwatchState {
             tickCounter = 0;
             sm.toRunningState();
         }
-        
+
         }
 
     //FIXME: No longer need Laptime - update name or change method
