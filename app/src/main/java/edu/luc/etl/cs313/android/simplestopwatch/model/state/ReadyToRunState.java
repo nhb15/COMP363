@@ -36,7 +36,7 @@ class ReadyToRunState implements StopwatchState {
             handler.postDelayed(new Runnable() {
                 public void run() {//method that will run following the specified delays
                     beep();
-                    clickCounter = 0;
+                    //clickCounter = 0;
                     tickCounter = 0;
                     sm.toRunningState();
                 }
