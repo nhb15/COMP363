@@ -49,12 +49,6 @@ class ReadyToRunState implements StopwatchState {
             clickCounter++;
         }
 
-        /**
-         * J/N
-         * Do we need to start the clock ticks in order to count them here?
-         *
-         * Name it onClick or onButtonEvent
-         */
     }
 
     /**
