@@ -22,33 +22,30 @@ class ReadyToRunState implements StopwatchState {
      * from Nate: I think if you use the sm.getRuntime() for the "click's" since the clicks update the runtime already it would be easier - alternatively, keep clickcounter but try having clickCounter == 98
      * since it seems like one extra click is required to send it to running state
      */
-    private int clickCounter = 0;
-    private int tickCounter = 0; // keeps track of tics once
+    private int clickCounter = 0; //initially, this was used to track click events. We removed in favor
+                                  //of get.Runtime()
+    private int tickCounter = 0; // keeps track of tick events
 
 
+    /**
+     * Overrides stopwatch's onStartStop method. Has an initial guard condition that checks
+     * if the runTime, that is the time set displayed on the stopwatch model, is equal to 99. If yes
+     * a handler is created to create a second long pause before a beep plays and the state machine
+     * transitions to the runningState. if no, the statemachine Increment action is called
+     */
     @Override
     public void onStartStop() {
         tickCounter = 0;
-
-        //Guard condition that checks if the clock model has reached 99
-        //by checking if the clickCounter has increased up to 99
-        //then resets clickCounter to 0 for future purposes
-        //if(clickCounter == 99){
         if(sm.getRuntime() == 99){
-            //TODO add single beep before transition
-
-            Handler handler = new Handler();
+            Handler handler = new Handler();//object that allows us to specify when we want an action to occur
             handler.postDelayed(new Runnable() {
-                public void run() {
+                public void run() {//method that will run following the specified delays
                     beep();
                     clickCounter = 0;
                     tickCounter = 0;
                     sm.toRunningState();
                 }
-            }, 1000);   //5 seconds
-
-
-
+            }, 1000);   //1 second
         }
         //if clock model has not yet reached 99, updates the clock model by one
         //and increments click counter
@@ -56,8 +53,6 @@ class ReadyToRunState implements StopwatchState {
             sm.actionInc();
             clickCounter++;
         }
-        //sm.actionStop();
-        //sm.toStoppedState();
 
         /**
          * J/N
@@ -78,9 +73,14 @@ class ReadyToRunState implements StopwatchState {
     }
      */
 
+    /**
+     * Overrides stopwatch's onTick method. Initially increments tickCounter for every tick event,
+     * then hits a guard condition that checks if the internal tickCounter has reached three. If yes,
+     * a beep plays, tickCounter is reset, and the state machine transitions to the running state.
+     */
     @Override
     public void onTick() {
-        tickCounter++;
+        tickCounter++;//increment of tickCounter per every onTick event in the internal clockmodel
 
         /**
          * Guard condition that checks if 3 seconds have elapsed using threeSecondsElapsed method
@@ -91,13 +91,8 @@ class ReadyToRunState implements StopwatchState {
             beep();
             tickCounter = 0;
             sm.toRunningState();
-
         }
-
-            /**
-             * Can we count the ticks somehow in this state in a separate method for the 3 tick check?
-             * See below, threeSecondsElapsed method
-             */
+        
         }
 
     //FIXME: No longer need Laptime - update name or change method
@@ -128,7 +123,9 @@ class ReadyToRunState implements StopwatchState {
      */
 
     /**
-     * threeSecondsElapsed checks if three seconds has passed 
+     * threeSecondsElapsed checks if three seconds has passed. This method was used initially,
+     * but has been replaced with a guard condition in the onTick method and an incrementing tickCounter
+     * that increments per tick event.
      * @return
      */
     public boolean threeSecondsElapsed(){
@@ -142,6 +139,9 @@ class ReadyToRunState implements StopwatchState {
     }
 
 
+    /**
+     * Method that creates a simple tone generator to play a short beep.
+     */
     public void beep(){
         /**
          * Taking thoughts from here:
